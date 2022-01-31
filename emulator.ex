@@ -1,3 +1,0 @@
-defmodule Emulator do
-
-end
