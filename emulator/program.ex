@@ -1,8 +1,8 @@
 defmodule Program do
-  def new() do
+  def read_instruction() do
 
   end
   def load() do
-
+    #Return {code, data}
   end
 end

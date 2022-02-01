@@ -1,7 +1,7 @@
 defmodule Emulator do
   def run(prgm)  do
     {code, data} = Program.load(prgm)
-    reg = Registers.new()
+    reg = Register.new()
     run(0, code, reg, data)
   end
 
