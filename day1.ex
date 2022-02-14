@@ -12,24 +12,33 @@ defmodule Day1 do
 
   def first() do
     [h|t] = example()
-    difference(t,h,0)
+    #difference(t,h,0)
+    diff = ["#{h}: No prior value"|difference(t,h,0)]
+    pprint(diff,0)
   end
   def second() do
     list = group3(example(), 0)
     [h|t] = list
-    difference(t,h,0)
+    diff = ["#{h}: No prior value"|difference(t,h,0)]
+    pprint(diff,0)
+
   end
   @doc """
   Data for data-input and b for last value, c for counting increased
   """
-  def difference([], _, c) do [c] end
+  def difference([], _, c) do ["Amount of increases: #{c}"] end
   def difference(data, b, c) do
     [h|t] = data
-    if h>b do
-      ["#{h}: Increased" | difference(t, h, c+1)]
+    if h==b do
+      ["#{h}: No change" | difference(t, h, c)]
     else
-      ["#{h}: Decreased" | difference(t, h, c)]
+      if h>b do
+        ["#{h}: Increased" | difference(t, h, c+1)]
+      else
+        ["#{h}: Decreased" | difference(t, h, c)]
+      end
     end
+
   end
 
   def group3(data, i) do
@@ -41,8 +50,13 @@ defmodule Day1 do
     end
   end
 
-  def pprint(init, list, i) do
-
+  def pprint(list, i) do
+    if Enum.count(list) > i do
+      IO.write("#{nth(i,list)}\n")
+      pprint(list,i+1)
+    else
+      :done
+    end
   end
 
   def nth(n,l) do
