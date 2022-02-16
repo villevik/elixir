@@ -11,13 +11,13 @@ defmodule Day1 do
 
 
   def first() do
-    [h|t] = example()
+    [h|t] = input()
     #difference(t,h,0)
     diff = ["#{h}: No prior value"|difference(t,h,0)]
     pprint(diff,0)
   end
   def second() do
-    list = group3(example(), 0)
+    list = group3(input(), 0)
     [h|t] = list
     diff = ["#{h}: No prior value"|difference(t,h,0)]
     pprint(diff,0)
