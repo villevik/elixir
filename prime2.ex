@@ -6,7 +6,7 @@ defmodule Primes do
   end
   def first([]) do [] end
   def first(l, i) do
-    if i < Enum.count(l) do
+    if i < Enum.count(l) do #i >= 0 do
       list = [nth(i,l) | filter(l, nth(i, l))]
       list = first(list, i+1)
     else
@@ -25,10 +25,15 @@ defmodule Primes do
   def filter(l, e) do
     if 1 < Enum.count(l) do
       [h|t] = l
-      case rem(h,e) do
+      #if h==e do
+      #  [h | filter(t,e)]
+      #else
+        case rem(h,e) do
           0 -> filter(t,e)
           _ -> [h | filter(t, e) ]
-      end
+        end
+      #end
+
     else
       [h] = l
       case rem(h,e) do
