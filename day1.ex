@@ -38,7 +38,6 @@ defmodule Day1 do
         ["#{h}: Decreased" | difference(t, h, c)]
       end
     end
-
   end
 
   def group3(data, i) do
