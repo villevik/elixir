@@ -10,15 +10,21 @@ defmodule Listop do
       position(t,y,i+1)
     end
   end
+  def take(_, 0) do [] end
   def take(xs, n) do
-    [h|t] = xs
-    if(n > 0) do
-      [h|take(t,n-1)]
+    if(Enum.count(xs) < 2 && n > 0) do
+      xs
     else
-      []
+      [h|t] = xs
+      if(n > 0) do
+        [h|take(t,n-1)]
+      else
+        []
+      end
     end
+
   end
-  def drop([],n) do
+  def drop([],_) do
     []
   end
   def drop(xs, n) do
@@ -32,7 +38,7 @@ defmodule Listop do
   def append(xs, ys) do
     xs ++ ys
   end
-  def member([], y) do
+  def member([], _) do
     false
   end
   def member(xs,y) do
