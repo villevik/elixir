@@ -10,5 +10,4 @@ defmodule Test do
     image = Mandel.mandelbrot(width, height, x0, y0, k, depth)
     PPM.write("small5.ppm", image)
   end
-
 end
